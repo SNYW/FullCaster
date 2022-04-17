@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091f6e3d5aba0624ab7c7e55da335b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 10
+  baseHealth: 20
   currentHealth: 10
   attackDamage: 10
-  moveSpeed: 0.5
+  moveSpeed: 0.3
   visionRange: 3
   attackRange: 1
   expValue: 100

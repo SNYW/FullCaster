@@ -1,14 +1,17 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ExpBar : MonoBehaviour
 {
     public Image expBar;
+    public TMP_Text levelText;
 
     private float targetFill;
  
     private void Update()
     {
+        levelText.text = "LV"+GameManager.Instance.level.ToString();
         targetFill = GameManager.Instance.currentExp / GameManager.Instance.expForLevel;
         if (GameManager.Instance.playing)
         {

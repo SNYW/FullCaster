@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 878586090213448993}
   - component: {fileID: 1291559521024303589}
   m_Layer: 6
-  m_Name: TestProjectile
+  m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dir: {x: 0, y: 0}
   moveSpeed: 1
-  damage: 50
+  damage: 10
 --- !u!1 &810802178309685197
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +284,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2

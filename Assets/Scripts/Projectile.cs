@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public Vector2 dir;
+    private Vector2 dir;
     public float moveSpeed;
     public int damage;
 

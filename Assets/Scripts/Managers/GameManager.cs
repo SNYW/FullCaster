@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     public Enemy GetClosestEnemy()
     {
-        float minDist = float.MaxValue;
+        float minDist = playerMage.range;
         Enemy returnEnemy = null;
         foreach(var enemy in Enemies)
         {

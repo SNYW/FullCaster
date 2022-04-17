@@ -8,9 +8,9 @@ public class LevelUpPopup : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.PauseGame();
-        foreach(SpellChoiceButton button in buttons)
+        foreach (SpellChoiceButton button in buttons)
         {
-            button.spell = SpellManager.Instance.GetRandomSpells();
+            button.SetSpell(SpellManager.Instance.GetRandomSpells());
         }
     }
 

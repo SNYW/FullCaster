@@ -1,22 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class SpellInstance
 {
+    public int level;
     public float coolDown;
     public float remainingCooldown;
-    private Spell spell;
+    public Spell spell;
 
     public void Init(Spell spell)
     {
+        level = 0;
         coolDown = spell.coolDown;
-        remainingCooldown = spell.coolDown;
         this.spell = spell;
     }
 
     public void Cast()
     {
-        spell.Cast();
+        if (spell.Cast(level))
+        {
+            remainingCooldown = spell.coolDown;
+        }
     }
 }

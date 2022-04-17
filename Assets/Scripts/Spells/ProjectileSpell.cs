@@ -3,22 +3,30 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ProjectileSpell : Spell
 {
-    public GameObject projectilePrefab;
     public bool tracking;
 
-    public override void Cast()
+    public override bool Cast(int level)
     {
-        var mage = GameManager.Instance.playerMage;
-        var proj = Instantiate(projectilePrefab, mage.transform.position, Quaternion.identity, mage.transform);
-
         switch (targetType)
         {
             case (TargetType.Closest):
-                proj.GetComponent<Projectile>().Shoot(GameManager.Instance.GetClosestEnemy().transform.position, tracking);
-                break;
+                return CastClosest(level);
             default:
-                break;
+                return false;
         }
+    }
 
+    private bool CastClosest(int level)
+    {
+        var mage = GameManager.Instance.playerMage;
+        mage.target = GameManager.Instance.GetClosestEnemy();
+        if (mage.target != null)
+        {
+            var proj = Instantiate(tiers[level].projectile, mage.projectileAnchor.transform.position, Quaternion.identity, mage.transform).GetComponent<Projectile>();
+            proj.Shoot(mage.target.transform.position, tracking);
+            mage.PlayCastAnim();
+            return true;
+        }
+        return false;
     }
 }

@@ -5,12 +5,12 @@ public class Mage : MonoBehaviour
 {
     public int baseHealth;
     public int currentHealth;
+    public float range;
     public Enemy target;
+    public Transform projectileAnchor;
 
-
-    private void Update()
+    public void PlayCastAnim()
     {
+        GetComponent<Animator>().Play("Attack");
     }
-
-
 }

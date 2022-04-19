@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -90,5 +88,17 @@ public class GameManager : MonoBehaviour
     {
         playing = true;
         Time.timeScale = 1;
+    }
+
+    public void AddPlayerGems(int amount)
+    {
+        if (PlayerPrefs.HasKey("gems"))
+        {
+            PlayerPrefs.SetInt("gems", PlayerPrefs.GetInt("gems") + amount);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("gems", amount);
+        }
     }
 }

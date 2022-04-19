@@ -11,7 +11,7 @@ public class ExpBar : MonoBehaviour
  
     private void Update()
     {
-        levelText.text = "LV"+GameManager.Instance.level.ToString();
+        levelText.text = GameManager.Instance.level.ToString();
         targetFill = GameManager.Instance.currentExp / GameManager.Instance.expForLevel;
         if (GameManager.Instance.playing)
         {

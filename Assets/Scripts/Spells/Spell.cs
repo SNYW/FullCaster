@@ -26,4 +26,5 @@ public class Spell : ScriptableObject
     }
 
     public virtual bool Cast(int level) { return false; }
+    public virtual void OnAdd() { }
 }

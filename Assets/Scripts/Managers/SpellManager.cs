@@ -9,6 +9,7 @@ public class SpellManager : MonoBehaviour
     public GameObject spellSlotPrefab;
     public Transform spellSlotParent;
     public List<Spell> possibleSpells = new List<Spell>();
+    public List<Spell> defaultSpells = new List<Spell>();
 
     private void Awake()
     {
@@ -36,9 +37,14 @@ public class SpellManager : MonoBehaviour
 
     private void Update()
     {
-        foreach(SpellInstance spell in activeSpells)
+        ManageSpellCooldowns();
+    }
+
+    private void ManageSpellCooldowns()
+    {
+        foreach (SpellInstance spell in activeSpells)
         {
-            if(spell.remainingCooldown - Time.deltaTime <= 0)
+            if (spell.remainingCooldown - Time.deltaTime <= 0)
             {
                 spell.remainingCooldown = 0;
                 spell.Cast();
@@ -49,18 +55,43 @@ public class SpellManager : MonoBehaviour
             }
         }
 
-        foreach(SpellSlot slot in spellSlotParent.GetComponentsInChildren<SpellSlot>())
+        foreach (SpellSlot slot in spellSlotParent.GetComponentsInChildren<SpellSlot>())
         {
             slot.UpdateCoolDown();
         }
     }
 
-    public SpellInstance GetRandomSpells()
+    public List<SpellInstance> GetSpellChoices()
     {
+        var validSpells = new List<SpellInstance>();
+        var maxSize = possibleSpells.Count > 3 || possibleSpells.Count == 0 ? 1 : possibleSpells.Count;
+        while(validSpells.Count < maxSize)
+        {
+            var newChoiceSpell = GetRandomSpell();
+            if (!validSpells.Contains(newChoiceSpell) && !HasChoiceAlready(validSpells, newChoiceSpell))
+            {
+                validSpells.Add(newChoiceSpell);
+            }
+        }
+        return validSpells;
+    }
+
+    private bool HasChoiceAlready(List<SpellInstance> validSpells, SpellInstance newChoiceSpell)
+    {
+        foreach (SpellInstance choiceSpell in validSpells)
+        {
+            if (choiceSpell.spell == newChoiceSpell.spell)
+                return true;
+        }
+        return false;
+    }
+
+    public SpellInstance GetRandomSpell()
+    {
+        var chooseInstance = new SpellInstance();
         if (possibleSpells.Count > 0)
         {
             var spell = possibleSpells[Random.Range(0, possibleSpells.Count - 1)];
-            var chooseInstance = new SpellInstance();
             chooseInstance.Init(spell);
 
             if (HasSpell(spell, out var instance))
@@ -75,30 +106,37 @@ public class SpellManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No possible spell choices");
-            return null;
+            var spell = defaultSpells[Random.Range(0, defaultSpells.Count - 1)];
+            chooseInstance.Init(spell);
+            return chooseInstance;
         }
-        
     }
 
     public void AddSpell(Spell spell)
     {
-        if (HasSpell(spell, out var instance))
+        if(spell is EffectSpell)
         {
-            instance.level++;
-            if (instance.level >= instance.spell.tiers.Length - 1) 
-            {
-                possibleSpells.Remove(instance.spell);
-                instance.level = instance.spell.tiers.Length-1;
-            } 
+            spell.OnAdd();
         }
         else
         {
-            var spellInstance = new SpellInstance();
-            spellInstance.Init(spell);
-            activeSpells.Add(spellInstance);
-            var spellSlot = Instantiate(spellSlotPrefab, spellSlotParent).GetComponent<SpellSlot>();
-            spellSlot.SetSpell(spell, spellInstance);
+            if (HasSpell(spell, out var instance))
+            {
+                instance.level++;
+                if (instance.level >= instance.spell.tiers.Length - 1)
+                {
+                    possibleSpells.Remove(instance.spell);
+                    instance.level = instance.spell.tiers.Length - 1;
+                }
+            }
+            else
+            {
+                var spellInstance = new SpellInstance();
+                spellInstance.Init(spell);
+                activeSpells.Add(spellInstance);
+                var spellSlot = Instantiate(spellSlotPrefab, spellSlotParent).GetComponent<SpellSlot>();
+                spellSlot.SetSpell(spell, spellInstance);
+            }
         }
     }
 

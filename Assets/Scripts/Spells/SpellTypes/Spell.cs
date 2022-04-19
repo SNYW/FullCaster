@@ -3,9 +3,6 @@ using UnityEngine;
 public class Spell : ScriptableObject
 {
     public string spellName;
-    public float damage;
-    public float coolDown;
-    public float remainingCooldown;
     public ProjectileSpellTier[] tiers;
 
     public enum TargetType

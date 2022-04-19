@@ -8,7 +8,7 @@ public class SpellInstance
     public void Init(Spell spell)
     {
         level = 0;
-        coolDown = spell.coolDown;
+        coolDown = spell.tiers[0].coolDown;
         this.spell = spell;
     }
 
@@ -16,7 +16,12 @@ public class SpellInstance
     {
         if (spell.Cast(level))
         {
-            remainingCooldown = spell.coolDown;
+            remainingCooldown = spell.tiers[level].coolDown;
         }
+    }
+
+    public bool IsMaxed()
+    {
+        return level >= spell.tiers.Length - 1;
     }
 }

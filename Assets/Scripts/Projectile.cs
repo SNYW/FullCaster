@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if(enemy != null)
         {
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(damage, 1);
             OnHit();
         }
     }

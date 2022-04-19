@@ -30,7 +30,14 @@ public class SpellManager : MonoBehaviour
         {
             foreach(Spell sp in s.spells)
             {
-                possibleSpells.Add(sp);
+                if (sp != null)
+                {
+                    possibleSpells.Add(sp);
+                }
+                else
+                {
+                    Debug.LogError($"Null spell in SpellSchool ${s.name}");
+                }
             }
         }
     }
@@ -91,7 +98,7 @@ public class SpellManager : MonoBehaviour
         var chooseInstance = new SpellInstance();
         if (possibleSpells.Count > 0)
         {
-            var spell = possibleSpells[Random.Range(0, possibleSpells.Count - 1)];
+            var spell = possibleSpells[Random.Range(0, possibleSpells.Count)];
             chooseInstance.Init(spell);
 
             if (HasSpell(spell, out var instance))
@@ -123,7 +130,7 @@ public class SpellManager : MonoBehaviour
             if (HasSpell(spell, out var instance))
             {
                 instance.level++;
-                if (instance.level >= instance.spell.tiers.Length - 1)
+                if (instance.IsMaxed())
                 {
                     possibleSpells.Remove(instance.spell);
                     instance.level = instance.spell.tiers.Length - 1;

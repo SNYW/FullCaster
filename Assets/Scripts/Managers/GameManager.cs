@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    
     public Mage playerMage;
+    public Material spriteMat;
+    public ColourPalette selectedColourPalette;
     public static GameManager Instance;
     public bool playing = true;
     public Spell testSpell;
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ResetGame();
+        PaletteManager.SetSpritePalette(spriteMat, selectedColourPalette);
         PopupManager.Instance.OpenChoicePopup();
     }
 

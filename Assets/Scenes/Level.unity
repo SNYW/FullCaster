@@ -653,7 +653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 356780815}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SpellAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -667,7 +667,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356780814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.121, y: -0.008, z: 0}
+  m_LocalPosition: {x: 0.079, y: 0.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 501630485}
@@ -894,7 +894,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501630484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.24, y: 0, z: 0}
+  m_LocalPosition: {x: -2.24, y: -0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1786972802}
@@ -3181,6 +3181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMage: {fileID: 501630486}
+  spriteMat: {fileID: 2100000, guid: 28cbd0348c3a6a34f99fdef82ca5035c, type: 2}
+  selectedColourPalette: {fileID: 11400000, guid: c77dfe90c81397849a931b609da19f5e, type: 2}
   playing: 1
   testSpell: {fileID: 11400000, guid: ec53f3af919185f469eaa4aa8caa3911, type: 2}
   level: 0
@@ -3416,7 +3418,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 28cbd0348c3a6a34f99fdef82ca5035c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3436,9 +3438,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 853fbca435ef65f49b52ffa729ddd4a7, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 1930761413316623981, guid: 9cbd698bb97ed814a9eda6eea49f6b1b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

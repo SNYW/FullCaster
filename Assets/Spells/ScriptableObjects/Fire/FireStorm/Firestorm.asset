@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Firestorm
   m_EditorClassIdentifier: 
   spellName: Firestorm
+  useCastAnim: 1
   tiers:
   - {fileID: 11400000, guid: 99ad8ebf797237b40a2bff3598f1ee57, type: 2}
   - {fileID: 11400000, guid: 5878a97144f0213418417a796f1e9cd0, type: 2}

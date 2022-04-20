@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 
     public int baseHealth;
     public int currentHealth;
+    public EnemyHPBar HPBar;
     public int attackDamage;
     public float moveSpeed;
     public float visionRange;
@@ -64,6 +65,7 @@ public class Enemy : MonoBehaviour
             currentHealth -= damage;
         }
         StartCoroutine(HandleKnockback(transform.position - (GameManager.Instance.playerMage.transform.position-transform.position).normalized * 0.1f));
+        HPBar.UpdateHealthBar(currentHealth, baseHealth);
     }
 
     private IEnumerator HandleKnockback(Vector2 targetPos)

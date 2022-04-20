@@ -3182,7 +3182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMage: {fileID: 501630486}
   spriteMat: {fileID: 2100000, guid: 28cbd0348c3a6a34f99fdef82ca5035c, type: 2}
-  selectedColourPalette: {fileID: 11400000, guid: c77dfe90c81397849a931b609da19f5e, type: 2}
+  selectedColourPalette: {fileID: 11400000, guid: 63da22cd054cc1f4e832260eda6e3575, type: 2}
   playing: 1
   testSpell: {fileID: 11400000, guid: ec53f3af919185f469eaa4aa8caa3911, type: 2}
   level: 0

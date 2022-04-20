@@ -25,7 +25,10 @@ public class ProjectileSpell : Spell
         {
             var proj = Instantiate(tiers[level].projectile, mage.projectileAnchor.transform.position, Quaternion.identity, mage.transform).GetComponent<Projectile>();
             proj.Shoot(mage.target.transform.position, tracking);
-            mage.PlayCastAnim();
+
+            if (useCastAnim)
+                mage.PlayCastAnim();
+
             return true;
         }
         return false;

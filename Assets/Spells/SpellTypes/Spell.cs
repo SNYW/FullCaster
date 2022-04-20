@@ -3,6 +3,7 @@ using UnityEngine;
 public class Spell : ScriptableObject
 {
     public string spellName;
+    public bool useCastAnim;
     public ProjectileSpellTier[] tiers;
 
     public enum TargetType

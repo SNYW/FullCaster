@@ -19,6 +19,10 @@ public class AreaSpell : Spell
     private bool CastSelf(int level)
     {
         var mage = GameManager.Instance.playerMage;
+
+        if (useCastAnim)
+            mage.PlayCastAnim();
+
         Instantiate(tiers[level].projectile, mage.transform.position, Quaternion.identity, mage.transform);
         return true;
     }

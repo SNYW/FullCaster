@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   spellName: Fireball
-  damage: 10
-  coolDown: 3
-  remainingCooldown: 2.4881036
+  useCastAnim: 1
   tiers:
   - {fileID: 11400000, guid: 9e551ac8605c02b498a84bdfbe26c6d0, type: 2}
   - {fileID: 11400000, guid: b1f4e58a2d65a4341a19dec1a33fc145, type: 2}

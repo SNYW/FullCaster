@@ -15,4 +15,4 @@ MonoBehaviour:
   tierName: Firestorm
   description: Damage + 3,   Cooldown - 1sec
   coolDown: 4
-  projectile: {fileID: 246920641630614665, guid: 0d1d1593116bbf34f9b0d7d0d2fac5c7, type: 3}
+  projectile: {fileID: 246920641630614665, guid: 518e949fac1e3f649bf1a79f89ccdfa7, type: 3}

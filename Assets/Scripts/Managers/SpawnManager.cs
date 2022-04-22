@@ -53,9 +53,9 @@ public class SpawnManager : MonoBehaviour
         return enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Length - 1)];
     }
 
-    private Vector2 GetRandomSpawnPosition()
+    private Vector3 GetRandomSpawnPosition()
     {
-        return new Vector2(transform.position.x, UnityEngine.Random.Range(minMaxY.x, minMaxY.y));
+        return new Vector3(transform.position.x, transform.position.y,  UnityEngine.Random.Range(minMaxY.x, minMaxY.y));
     }
 
     public void UpdateSpawnDelay(int level)

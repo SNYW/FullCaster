@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
         if (state == EnemyState.Moving)
         {
             var magePos = GameManager.Instance.playerMage.gameObject.transform.position;
-            agent.destination = magePos;
+            agent.destination = new Vector3(magePos.x+attackRange, magePos.y, magePos.z);
             
         }
     }
@@ -60,16 +60,17 @@ public class Enemy : MonoBehaviour
         {
             currentHealth -= damage;
         }
-        StartCoroutine(HandleKnockback(transform.position - (GameManager.Instance.playerMage.transform.position-transform.position).normalized * 0.1f));
+        var newPos = new Vector3(transform.position.x+knockbackDist, transform.position.y, transform.position.z);
+        StartCoroutine(HandleKnockback(newPos));
         HPBar.UpdateHealthBar(currentHealth, baseHealth);
     }
 
-    private IEnumerator HandleKnockback(Vector2 targetPos)
+    private IEnumerator HandleKnockback(Vector3 targetPos)
     {
         state = EnemyState.Knockback;
-        while((Vector2)transform.position != targetPos)
+        while(transform.position != targetPos)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed*8 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed*8 * Time.deltaTime);
             yield return null;
         }
         state = EnemyState.Moving;

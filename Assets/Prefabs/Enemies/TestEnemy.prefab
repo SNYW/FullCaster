@@ -152,9 +152,9 @@ MonoBehaviour:
   currentHealth: 10
   HPBar: {fileID: 2327845680397653811}
   attackDamage: 10
-  moveSpeed: 0.2
+  moveSpeed: 10
   visionRange: 3
-  attackRange: 0.03
+  attackRange: 1.3
   expValue: 100
 --- !u!195 &6048979544900391301
 NavMeshAgent:

@@ -15,4 +15,4 @@ MonoBehaviour:
   tierName: Fireball
   description: Shoots at the closest enemy dealing 10 damage on hit
   coolDown: 3
-  projectile: {fileID: 268086727245526328, guid: 63ab1a2abd1a71445b8d6afd02023a6f, type: 3}
+  projectile: {fileID: 268086727245526328, guid: d1cd54bbf4b2bb942b75bb5f9f386a98, type: 3}

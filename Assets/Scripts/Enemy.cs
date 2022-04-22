@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     public int expValue;
     private EnemyState state;
+    private NavMeshAgent agent;
 
     private enum EnemyState
     {
@@ -24,6 +26,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         state = EnemyState.Moving;
         currentHealth = baseHealth;    
     }
@@ -42,15 +45,8 @@ public class Enemy : MonoBehaviour
         if (state == EnemyState.Moving)
         {
             var magePos = GameManager.Instance.playerMage.gameObject.transform.position;
-            var dist = Utils.GetDistance(magePos, transform.position);
-            if (dist > visionRange)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + Vector2.left, moveSpeed * Time.deltaTime);
-            }
-            else if (dist > attackRange)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, magePos, moveSpeed * Time.deltaTime);
-            }
+            agent.destination = magePos;
+            
         }
     }
 

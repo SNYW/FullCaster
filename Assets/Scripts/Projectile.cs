@@ -20,12 +20,13 @@ public class Projectile : MonoBehaviour
     {
         while (true)
         {
-            transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + dir * moveSpeed, moveSpeed * Time.deltaTime);
+            var pos = new Vector2(transform.position.x, transform.position.y + 10);
+            transform.position = Vector2.MoveTowards(transform.position, pos + dir * moveSpeed, moveSpeed * Time.deltaTime);
             yield return null;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if(enemy != null)

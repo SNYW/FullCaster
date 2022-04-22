@@ -15,4 +15,4 @@ MonoBehaviour:
   tierName: Fireball LV 2
   description: Damage + 10
   coolDown: 3
-  projectile: {fileID: 268086727245526328, guid: 0fc20b3f1fb6d07418c5f5b5bfa24df3, type: 3}
+  projectile: {fileID: 268086727245526328, guid: 1d54c97b54d6d1542b07aa237298daba, type: 3}

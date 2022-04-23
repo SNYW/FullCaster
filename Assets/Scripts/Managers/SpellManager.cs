@@ -98,7 +98,7 @@ public class SpellManager : MonoBehaviour
         var chooseInstance = new SpellInstance();
         if (possibleSpells.Count > 0)
         {
-            var spell = possibleSpells[Random.Range(0, possibleSpells.Count)];
+            var spell = Utils.RandomFromList(possibleSpells);
             chooseInstance.Init(spell);
 
             if (HasSpell(spell, out var instance))
@@ -113,7 +113,7 @@ public class SpellManager : MonoBehaviour
         }
         else
         {
-            var spell = defaultSpells[Random.Range(0, defaultSpells.Count - 1)];
+            var spell = Utils.RandomFromList(defaultSpells);
             chooseInstance.Init(spell);
             return chooseInstance;
         }

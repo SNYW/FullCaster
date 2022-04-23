@@ -35,9 +35,18 @@ public class Projectile : MonoBehaviour
         {
             enemy.TakeDamage(damage, 1);
             var particles = GetComponentsInChildren<ParticleSystem>();
+            if (particles != null)
+                particles.ToList().ForEach(sys => HandleParticles(sys));
 
             OnHit();
         }
+    }
+
+    private void HandleParticles(ParticleSystem ps)
+    {
+        var em = ps.emission;
+        em.rateOverTime = 0f;
+        ps.transform.parent = null;
     }
 
     private void OnHit()

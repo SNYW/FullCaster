@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class Utils
@@ -12,5 +13,15 @@ public static class Utils
     {
         var dir = pos1 - pos2;
         return dir.sqrMagnitude;
+    }
+
+    public static int RandomIndex<T>(List<T> list)
+    {
+        return Random.Range(0, list.Count);
+    }
+
+    public static T RandomFromList<T>(List<T> list)
+    {
+        return list[Random.Range(0, list.Count)];
     }
 }

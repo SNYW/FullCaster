@@ -23,7 +23,7 @@ public class AreaSpell : Spell
         if (useCastAnim)
             mage.PlayCastAnim();
 
-        Instantiate(tiers[level].projectile, mage.transform.position, Quaternion.identity, mage.transform);
+        Instantiate(tiers[level].projectile, mage.aoeAnchor.transform.position, Quaternion.identity, mage.transform);
         return true;
     }
 }

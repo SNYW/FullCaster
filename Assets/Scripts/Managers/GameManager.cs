@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public float expForLevel;
     public float expGrowthPerLevel;
     public int currentExp;
+    public PlayerState playerState;
 
     public List<Enemy> Enemies = new List<Enemy>();
 
@@ -34,6 +35,17 @@ public class GameManager : MonoBehaviour
         ResetGame();
         PaletteManager.SetSpritePalette(spriteMat, selectedColourPalette);
         PopupManager.Instance.OpenChoicePopup();
+    }
+
+    public enum PlayerState
+    {
+        Moving,
+        HasTarget
+    }
+
+    private void Update()
+    {
+        playerState = GetClosestEnemy() != null ? PlayerState.HasTarget : PlayerState.Moving;
     }
 
     public Enemy GetClosestEnemy()

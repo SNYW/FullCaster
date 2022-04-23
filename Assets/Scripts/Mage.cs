@@ -8,6 +8,7 @@ public class Mage : MonoBehaviour
     public float range;
     public Enemy target;
     public Transform projectileAnchor;
+    public Transform aoeAnchor;
 
     public void PlayCastAnim()
     {

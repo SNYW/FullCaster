@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +31,7 @@ public class AreaEffect : MonoBehaviour
         var particles = GetComponentsInChildren<ParticleSystem>();
         if (particles != null)
             particles.ToList().ForEach(sys => HandleParticles(sys));
-        Destroy(gameObject,3);
+        Destroy(gameObject, 3);
         gameObject.SetActive(false);
     }
 
@@ -41,7 +40,7 @@ public class AreaEffect : MonoBehaviour
         var em = sys.emission;
         em.rateOverTime = 0f;
         sys.transform.parent = null;
-        Destroy(sys.gameObject, 3);
+        Destroy(sys.gameObject, 2.9f);
     }
 
     private IEnumerator DoEffects()
@@ -49,7 +48,7 @@ public class AreaEffect : MonoBehaviour
         while (true)
         {
             Collider[] targets = Physics.OverlapSphere(transform.position, effectArea.radius, layerMask);
-          
+
             foreach (var enemy in targets.Where(col => col.GetComponent<Enemy>() != null))
             {
                 enemy.GetComponent<Enemy>().TakeDamage(damage, 1);

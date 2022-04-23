@@ -4,6 +4,7 @@ public class Spell : ScriptableObject
 {
     public string spellName;
     public bool useCastAnim;
+    public GameObject castEffect;
     public ProjectileSpellTier[] tiers;
 
     public enum TargetType
@@ -18,7 +19,7 @@ public class Spell : ScriptableObject
 
     public TargetType targetType;
 
-    public enum DamageType 
+    public enum DamageType
     {
         Default
     }

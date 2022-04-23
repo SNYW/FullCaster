@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,10 +13,11 @@ public class Enemy : MonoBehaviour
     public float visionRange;
     public float attackRange;
     public int expValue;
-    private EnemyState state;
+    public EnemyState state;
+    public Vector3 targetPos;
     private NavMeshAgent agent;
 
-    private enum EnemyState
+    public enum EnemyState
     {
         Moving,
         Knockback,
@@ -28,16 +28,16 @@ public class Enemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         state = EnemyState.Moving;
-        currentHealth = baseHealth;    
+        currentHealth = baseHealth;
     }
 
     void Update()
     {
-        if (GameManager.Instance.playing )
+        if (GameManager.Instance.playing)
         {
             ManageMove();
         }
-        
+
     }
 
     private void ManageMove()
@@ -45,14 +45,14 @@ public class Enemy : MonoBehaviour
         if (state == EnemyState.Moving)
         {
             var magePos = GameManager.Instance.playerMage.gameObject.transform.position;
-            agent.destination = new Vector3(magePos.x+attackRange, magePos.y, magePos.z);
-            
+            agent.destination = new Vector3(magePos.x + attackRange, magePos.y, magePos.z);
+
         }
     }
 
     public void TakeDamage(int damage, float knockbackDist)
     {
-        if(currentHealth - damage <= 0)
+        if (currentHealth - damage <= 0)
         {
             Die();
         }
@@ -60,20 +60,28 @@ public class Enemy : MonoBehaviour
         {
             currentHealth -= damage;
         }
-        var newPos = new Vector3(transform.position.x+knockbackDist, transform.position.y, transform.position.z);
-        StartCoroutine(HandleKnockback(newPos));
+        targetPos = new Vector3(transform.position.x + knockbackDist, transform.position.y, transform.position.z);
+        StartCoroutine(HandleKnockback(targetPos));
         HPBar.UpdateHealthBar(currentHealth, baseHealth);
     }
 
     private IEnumerator HandleKnockback(Vector3 targetPos)
     {
-        state = EnemyState.Knockback;
-        while(transform.position != targetPos)
+        if (agent.isOnNavMesh)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed*8 * Time.deltaTime);
-            yield return null;
+            state = EnemyState.Knockback;
+            var baseSpeed = agent.speed;
+            while (transform.position.x < targetPos.x-0.2f)
+            {
+                agent.SetDestination(targetPos);
+                agent.speed = 10000;
+                agent.acceleration = 10000;
+                yield return null;
+            }
+            agent.speed = baseSpeed;
+            state = EnemyState.Moving;
         }
-        state = EnemyState.Moving;
+
     }
 
     public void Die()

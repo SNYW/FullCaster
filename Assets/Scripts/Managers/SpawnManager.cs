@@ -1,6 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -9,6 +8,7 @@ public class SpawnManager : MonoBehaviour
     public float spawnDelay;
     public float spawnDelayLevelFactor;
     public float minSpawnDelay;
+    public float remainingSpawns;
 
     public Vector2 minMaxY;
 
@@ -39,10 +39,11 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            if (GameManager.Instance.playing)
+            if (GameManager.Instance.playing && remainingSpawns > 0)
             {
                 var newEnemy = Instantiate(GetRandomEnemyForLevel(), GetRandomSpawnPosition(), Quaternion.identity, enemyParent).GetComponent<Enemy>();
                 GameManager.Instance.Enemies.Add(newEnemy);
+                remainingSpawns--;
             }
             yield return new WaitForSeconds(spawnDelay);
         }
@@ -50,16 +51,21 @@ public class SpawnManager : MonoBehaviour
 
     private GameObject GetRandomEnemyForLevel()
     {
-        return enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Length - 1)];
+        return Utils.RandomFromList(enemyPrefabs.ToList());
     }
 
     private Vector3 GetRandomSpawnPosition()
     {
-        return new Vector3(transform.position.x, transform.position.y,  UnityEngine.Random.Range(minMaxY.x, minMaxY.y));
+        return new Vector3(transform.position.x, transform.position.y, UnityEngine.Random.Range(minMaxY.x, minMaxY.y));
     }
 
     public void UpdateSpawnDelay(int level)
     {
         spawnDelay = Mathf.Clamp(spawnDelay - spawnDelayLevelFactor, minSpawnDelay, int.MaxValue);
+    }
+
+    public void AddEnemies(int amount)
+    {
+        remainingSpawns += amount;
     }
 }

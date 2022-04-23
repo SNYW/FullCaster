@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -28,6 +27,9 @@ public class ProjectileSpell : Spell
 
             if (useCastAnim)
                 mage.PlayCastAnim();
+
+            if(castEffect!= null)
+                Instantiate(castEffect, mage.projectileAnchor.transform.position, Quaternion.identity, mage.transform);
 
             return true;
         }

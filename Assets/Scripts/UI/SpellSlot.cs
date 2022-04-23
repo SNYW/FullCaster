@@ -25,6 +25,6 @@ public class SpellSlot : MonoBehaviour
 
     internal void UpdateCoolDown()
     {
-        cooldownIndicator.fillAmount = instance.remainingCooldown/instance.coolDown;
+        cooldownIndicator.fillAmount = instance.remainingCooldown / instance.coolDown;
     }
 }

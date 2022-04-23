@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -19,13 +18,13 @@ public class LevelManager : MonoBehaviour
             IncrementTiles();
         }
 
-        if(GameManager.Instance.playerState == GameManager.PlayerState.Moving)
+        if (GameManager.Instance.playerState == GameManager.PlayerState.Moving)
         {
             allLiveTiles.RemoveAll(tile => tile == null);
             allLiveTiles.ForEach(tile => HandleTile(tile));
         }
 
-        if(currentTile.incrementX >= currentTile.transform.position.x)
+        if (currentTile.incrementX >= currentTile.transform.position.x)
         {
             IncrementTiles();
         }

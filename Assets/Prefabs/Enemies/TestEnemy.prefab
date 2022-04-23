@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091f6e3d5aba0624ab7c7e55da335b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 20
+  baseHealth: 1
   currentHealth: 10
   HPBar: {fileID: 2327845680397653811}
   attackDamage: 10
@@ -156,6 +156,8 @@ MonoBehaviour:
   visionRange: 3
   attackRange: 1.3
   expValue: 100
+  state: 0
+  targetPos: {x: 0, y: 0, z: 0}
 --- !u!195 &6048979544900391301
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -167,7 +169,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.26
   m_Speed: 2
-  m_Acceleration: 8
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 0
   m_StoppingDistance: 0

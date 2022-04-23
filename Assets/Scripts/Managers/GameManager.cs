@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
+
     public Mage playerMage;
     public Material spriteMat;
     public ColourPalette selectedColourPalette;
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     {
         float minDist = playerMage.range;
         Enemy returnEnemy = null;
-        foreach(var enemy in Enemies)
+        foreach (var enemy in Enemies)
         {
             var dist = Utils.GetDistance(playerMage.transform.position, enemy.transform.position);
             if (dist < minDist)

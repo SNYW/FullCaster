@@ -26,9 +26,9 @@ public class SpellManager : MonoBehaviour
 
     private void PopulatePossibleSpells()
     {
-        foreach(SpellSchool s in selectedSpellSchools)
+        foreach (SpellSchool s in selectedSpellSchools)
         {
-            foreach(Spell sp in s.spells)
+            foreach (Spell sp in s.spells)
             {
                 if (sp != null)
                 {
@@ -72,7 +72,7 @@ public class SpellManager : MonoBehaviour
     {
         var validSpells = new List<SpellInstance>();
         var maxSize = possibleSpells.Count > 3 || possibleSpells.Count == 0 ? 1 : possibleSpells.Count;
-        while(validSpells.Count < maxSize)
+        while (validSpells.Count < maxSize)
         {
             var newChoiceSpell = GetRandomSpell();
             if (!validSpells.Contains(newChoiceSpell) && !HasChoiceAlready(validSpells, newChoiceSpell))
@@ -121,7 +121,7 @@ public class SpellManager : MonoBehaviour
 
     public void AddSpell(Spell spell)
     {
-        if(spell is EffectSpell)
+        if (spell is EffectSpell)
         {
             spell.OnAdd();
         }
@@ -150,9 +150,9 @@ public class SpellManager : MonoBehaviour
     private bool HasSpell(Spell spell, out SpellInstance instance)
     {
         instance = null;
-        foreach(SpellInstance inst in activeSpells)
+        foreach (SpellInstance inst in activeSpells)
         {
-            if(inst.spell == spell)
+            if (inst.spell == spell)
             {
                 instance = inst;
                 return true;

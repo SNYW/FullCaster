@@ -899,12 +899,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_StartPoint: {x: 30.59, y: 0, z: 0}
-  m_EndPoint: {x: 36, y: 0, z: 0}
+  m_StartPoint: {x: 32.6, y: 0.51, z: 0}
+  m_EndPoint: {x: 31.6, y: 0.51, z: 0}
   m_Width: 11.8
-  m_CostModifier: -1
-  m_Bidirectional: 1
-  m_AutoUpdatePosition: 0
+  m_CostModifier: 0
+  m_Bidirectional: 0
+  m_AutoUpdatePosition: 1
   m_Area: 0
 --- !u!1 &1718879927240146375
 GameObject:
@@ -953,6 +953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49875fc4585080e44a2f38984b11b94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAmount: 100
   floorTile: {fileID: 1718879927104610863}
   tileType: 0
   incrementX: -9

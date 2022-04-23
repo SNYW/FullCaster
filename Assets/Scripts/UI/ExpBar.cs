@@ -8,7 +8,7 @@ public class ExpBar : MonoBehaviour
     public TMP_Text levelText;
 
     private float targetFill;
- 
+
     private void Update()
     {
         levelText.text = GameManager.Instance.level.ToString();

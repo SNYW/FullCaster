@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelUpPopup : MonoBehaviour
@@ -11,7 +9,7 @@ public class LevelUpPopup : MonoBehaviour
     {
         GameManager.Instance.PauseGame();
         var validSpells = SpellManager.Instance.GetSpellChoices();
-        foreach(SpellInstance spellInstance in validSpells)
+        foreach (SpellInstance spellInstance in validSpells)
         {
             var button = Instantiate(choiceButton, buttonAnchor).GetComponent<SpellChoiceButton>();
             button.SetSpell(spellInstance);
@@ -21,7 +19,7 @@ public class LevelUpPopup : MonoBehaviour
     private void OnDisable()
     {
         GameManager.Instance.ResumeGame();
-        foreach(Transform t in buttonAnchor)
+        foreach (Transform t in buttonAnchor)
         {
             if (t.GetComponent<SpellChoiceButton>() != null)
                 Destroy(t.gameObject);

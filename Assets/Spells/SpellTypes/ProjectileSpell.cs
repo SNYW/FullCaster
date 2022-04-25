@@ -20,19 +20,26 @@ public class ProjectileSpell : Spell
     {
         var mage = GameManager.Instance.playerMage;
         mage.target = GameManager.Instance.GetClosestEnemy();
+
         if (mage.target != null)
         {
-            var proj = Instantiate(tiers[level].projectile, mage.projectileAnchor.transform.position, Quaternion.identity, mage.transform).GetComponent<Projectile>();
-            proj.Shoot(mage.target.transform.position, tracking);
-
             if (useCastAnim)
                 mage.PlayCastAnim();
 
-            if(castEffect!= null)
+            var proj = Instantiate(tiers[level].projectile,
+                    mage.projectileAnchor.transform.position,
+                    Quaternion.identity,
+                    mage.transform)
+                    .GetComponent<Projectile>();
+
+            proj.Shoot(mage.target.transform.position, tracking);
+
+            if (castEffect != null)
                 Instantiate(castEffect, mage.projectileAnchor.transform.position, Quaternion.identity, mage.transform);
 
             return true;
         }
+
         return false;
     }
 }

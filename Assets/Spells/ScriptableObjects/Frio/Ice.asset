@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 304b5769a8fbb0842abb6a3f81b610b2, type: 3}
-  m_Name: FireballTier1
+  m_Script: {fileID: 11500000, guid: 66a51d07470f1be4a9ec067536237817, type: 3}
+  m_Name: Ice
   m_EditorClassIdentifier: 
-  tierName: Fireball LV 2
-  description: Damage + 10
-  coolDown: 3
-  projectile: {fileID: 268086727245526328, guid: 1ec2434dc64a8b542b5ed3c5a41036af, type: 3}
-  amount: 1
-  delay: 0
+  schoolName: Frio (Ice)
+  spells:
+  - {fileID: 11400000, guid: 254b2b15821e051458c715b264c9db9d, type: 2}

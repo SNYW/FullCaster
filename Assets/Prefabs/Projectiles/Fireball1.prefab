@@ -49,6 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   damage: 10
+  shakeAmount: 0.1
+  shakeLenth: 0.3
+  shakeDamp: 1
   impactPrefab: {fileID: 1220682845126790835, guid: cc6eb92f516297541939ff7ea7904a72, type: 3}
 --- !u!135 &1715919352903921063
 SphereCollider:

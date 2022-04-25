@@ -16,3 +16,5 @@ MonoBehaviour:
   description: Surround yourself in fire dealing 3 damage per second for 3 seconds
   coolDown: 7
   projectile: {fileID: 246920641630614665, guid: c8a9d1aa519d4504591f4e5f30ab1012, type: 3}
+  amount: 1
+  delay: 0

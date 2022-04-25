@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = Random.Range(0.5f, 1.3f);
         state = EnemyState.Moving;
         currentHealth = baseHealth;
     }
@@ -61,7 +62,8 @@ public class Enemy : MonoBehaviour
             currentHealth -= damage;
         }
         targetPos = new Vector3(transform.position.x + knockbackDist, transform.position.y, transform.position.z);
-        StartCoroutine(HandleKnockback(targetPos));
+        if(state != EnemyState.Knockback)
+            StartCoroutine(HandleKnockback(targetPos));
         HPBar.UpdateHealthBar(currentHealth, baseHealth);
     }
 

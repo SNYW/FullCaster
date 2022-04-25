@@ -53,8 +53,8 @@ public class SpellManager : MonoBehaviour
         {
             if (spell.remainingCooldown - Time.deltaTime <= 0)
             {
-                spell.remainingCooldown = 0;
-                spell.Cast();
+                spell.remainingCooldown = int.MaxValue;
+                StartCoroutine(spell.Cast());
             }
             else
             {
@@ -129,7 +129,7 @@ public class SpellManager : MonoBehaviour
         {
             if (HasSpell(spell, out var instance))
             {
-                instance.level++;
+                instance.IncrementLevel();
                 if (instance.IsMaxed())
                 {
                     possibleSpells.Remove(instance.spell);
@@ -160,5 +160,10 @@ public class SpellManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void TriggerGlobalCooldown()
+    {
+        activeSpells.ForEach(spell => spell.remainingCooldown += 1);
     }
 }

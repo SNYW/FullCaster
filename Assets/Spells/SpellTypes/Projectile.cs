@@ -7,6 +7,9 @@ public class Projectile : MonoBehaviour
     private Vector3 dir;
     public float moveSpeed;
     public int damage;
+    public float shakeAmount;
+    public float shakeLenth;
+    public float shakeDamp;
     public GameObject impactPrefab;
 
     public void Shoot(Vector3 target, bool tracking)
@@ -38,8 +41,10 @@ public class Projectile : MonoBehaviour
             if (particles != null)
                 particles.ToList().ForEach(sys => HandleParticles(sys));
 
-            OnHit();
+            CameraShake.Instance.AddShakeDuration(shakeLenth, shakeAmount, shakeDamp);
         }
+
+        OnHit();
     }
 
     private void HandleParticles(ParticleSystem ps)

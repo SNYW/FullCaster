@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a2f8879525f595409f4829f66762e7f, type: 3}
+  m_Name: Ice Dart
+  m_EditorClassIdentifier: 
+  spellName: Ice Dart
+  useCastAnim: 1
+  castEffect: {fileID: 2952337315412992746, guid: 2ff9f011d5384814681c2e6021ca6a99, type: 3}
+  tiers:
+  - {fileID: 11400000, guid: 1251a83d14bfa7246bd29c62cffa0ada, type: 2}
+  - {fileID: 11400000, guid: a8376d3bf580fad4b80395b532c1b76c, type: 2}
+  - {fileID: 11400000, guid: c2888584edb63a5488baaf00915687c7, type: 2}
+  - {fileID: 11400000, guid: d2cdf5557d29b3843bb892972475e768, type: 2}
+  targetType: 0
+  tracking: 0

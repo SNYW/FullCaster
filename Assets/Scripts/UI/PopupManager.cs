@@ -26,6 +26,7 @@ public class PopupManager : MonoBehaviour
 
     public void OpenChoicePopup()
     {
+        CameraShake.Instance.StopShake();
         darkenator.SetActive(true);
         choicePopup.SetActive(true);
     }

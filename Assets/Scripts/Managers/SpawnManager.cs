@@ -56,7 +56,7 @@ public class SpawnManager : MonoBehaviour
 
     private Vector3 GetRandomSpawnPosition()
     {
-        return new Vector3(transform.position.x, transform.position.y, UnityEngine.Random.Range(minMaxY.x, minMaxY.y));
+        return new Vector3(transform.position.x, transform.position.y, Random.Range(minMaxY.x, minMaxY.y));
     }
 
     public void UpdateSpawnDelay(int level)

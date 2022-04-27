@@ -48,11 +48,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  damage: 10
+  damage: 50
+  knockback: 1
   shakeAmount: 0.1
   shakeLenth: 0.3
   shakeDamp: 1
   impactPrefab: {fileID: 1220682845126790835, guid: cc6eb92f516297541939ff7ea7904a72, type: 3}
+  secondaryEffect: {fileID: 0}
 --- !u!135 &1715919352903921063
 SphereCollider:
   m_ObjectHideFlags: 0

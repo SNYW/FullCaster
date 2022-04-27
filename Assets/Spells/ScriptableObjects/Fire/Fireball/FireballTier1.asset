@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireballTier1
   m_EditorClassIdentifier: 
   tierName: Fireball LV 2
-  description: Damage + 10
+  description: Damage + 30
   coolDown: 3
   projectile: {fileID: 268086727245526328, guid: 1ec2434dc64a8b542b5ed3c5a41036af, type: 3}
   amount: 1

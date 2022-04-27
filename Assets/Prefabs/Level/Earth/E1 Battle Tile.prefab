@@ -953,7 +953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49875fc4585080e44a2f38984b11b94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAmount: 100
+  enemyAmount: 10
   floorTile: {fileID: 1718879927104610863}
   tileType: 0
   incrementX: -9

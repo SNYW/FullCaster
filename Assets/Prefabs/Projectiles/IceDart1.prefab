@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1715919352903921063}
   - component: {fileID: 804852704}
   m_Layer: 6
-  m_Name: IceShard1
+  m_Name: IceDart1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,11 +48,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 17
-  damage: 2
+  damage: 10
+  knockback: 0.4
   shakeAmount: 0.05
   shakeLenth: 0.2
   shakeDamp: 1.5
   impactPrefab: {fileID: 2952337315412992746, guid: 47c1427f090414f49875ce8de6717fab, type: 3}
+  secondaryEffect: {fileID: 6451343322648783377, guid: 3bdff478394ff5d42acbd5d6e084a3ab, type: 3}
 --- !u!135 &1715919352903921063
 SphereCollider:
   m_ObjectHideFlags: 0

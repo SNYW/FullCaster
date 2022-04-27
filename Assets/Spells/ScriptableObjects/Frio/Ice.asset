@@ -15,3 +15,4 @@ MonoBehaviour:
   schoolName: Frio (Ice)
   spells:
   - {fileID: 11400000, guid: 254b2b15821e051458c715b264c9db9d, type: 2}
+  - {fileID: 11400000, guid: b45baa1d360b4e14b9f2daa1c956bca5, type: 2}

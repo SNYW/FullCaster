@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -32,10 +33,16 @@ public class ProjectileSpell : Spell
                     mage.transform)
                     .GetComponent<Projectile>();
 
-            proj.Shoot(mage.target.transform.position, tracking);
-
+            proj.Shoot(Utils.RandomFromList(mage.target.targetTransforms).position, tracking);
+            
             if (castEffect != null)
-                Instantiate(castEffect, mage.projectileAnchor.transform.position, Quaternion.identity, mage.transform);
+            {
+               var eff = Instantiate(castEffect, mage.projectileAnchor.transform.position, Quaternion.identity, ParticleSystemManager.Instance.transform);
+                eff.GetComponentsInChildren<ParticleSystem>()
+                .ToList()
+                .ForEach(ps => ParticleSystemManager.Instance.AddSystem(ps, 2));
+            }
+                
 
             return true;
         }

@@ -7,7 +7,6 @@ public class LevelUpPopup : MonoBehaviour
 
     private void OnEnable()
     {
-        CameraShake.Instance.StopShake();
         GameManager.Instance.PauseGame();
         var validSpells = SpellManager.Instance.GetSpellChoices();
         foreach (SpellInstance spellInstance in validSpells)

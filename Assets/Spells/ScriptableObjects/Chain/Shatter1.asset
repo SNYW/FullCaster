@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98e5df9bc33243479f790f7e4486a7a, type: 3}
-  m_Name: Gems
+  m_Script: {fileID: 11500000, guid: 304b5769a8fbb0842abb6a3f81b610b2, type: 3}
+  m_Name: Shatter1
   m_EditorClassIdentifier: 
-  spellName: Get Gems!
-  useCastAnim: 0
-  castEffect: {fileID: 0}
-  tiers:
-  - {fileID: 11400000, guid: f129c5c991b509a4c82ca2b259c065b3, type: 2}
-  targetType: 0
-  gemAmount: 100
+  tierName: Shatter
+  description: Shatters all Ice Darts, dealing 10 damage each
+  coolDown: 4
+  projectile: {fileID: 0}
+  amount: 1
+  delay: 0

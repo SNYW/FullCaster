@@ -7,10 +7,12 @@ public class Projectile : MonoBehaviour
     private Vector3 dir;
     public float moveSpeed;
     public int damage;
+    public float knockback;
     public float shakeAmount;
     public float shakeLenth;
     public float shakeDamp;
     public GameObject impactPrefab;
+    public SecondarySpellEffect secondaryEffect;
 
     public void Shoot(Vector3 target, bool tracking)
     {
@@ -25,7 +27,7 @@ public class Projectile : MonoBehaviour
     {
         while (true)
         {
-            var pos = new Vector3(transform.position.x, transform.position.y + 10);
+            var pos = new Vector3(transform.position.x, transform.position.y);
             transform.position = Vector3.MoveTowards(transform.position, pos + dir * moveSpeed, moveSpeed * Time.deltaTime);
             yield return null;
         }
@@ -36,10 +38,12 @@ public class Projectile : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.TakeDamage(damage, 1);
-            var particles = GetComponentsInChildren<ParticleSystem>();
-            if (particles != null)
-                particles.ToList().ForEach(sys => HandleParticles(sys));
+            if(secondaryEffect != null)
+            {
+                var secondary = Instantiate(secondaryEffect, transform.position, Quaternion.identity);
+                secondary.Init(enemy, collision.GetContact(0).point);
+            }
+            enemy.TakeDamage(damage, knockback);
 
             CameraShake.Instance.AddShakeDuration(shakeLenth, shakeAmount, shakeDamp);
         }
@@ -47,21 +51,17 @@ public class Projectile : MonoBehaviour
         OnHit();
     }
 
-    private void HandleParticles(ParticleSystem ps)
-    {
-        var em = ps.emission;
-        var main = ps.main;
-        em.rateOverTime = 0f;
-        ps.transform.parent = null;
-        main.loop = false;
-        Destroy(ps, 2.8f)
-;    }
-
     private void OnHit()
     {
-        var impact = Instantiate(impactPrefab, transform.position, Quaternion.identity);
-        Destroy(impact, 2.9f);
-        Destroy(gameObject, 3);
-        gameObject.SetActive(false);
+        var particles = GetComponentsInChildren<ParticleSystem>();
+        if (particles != null)
+            particles.ToList().ForEach(ps => ParticleSystemManager.Instance.AddSystem(ps, 2));
+
+        var impact = Instantiate(impactPrefab, transform.position, Quaternion.identity, ParticleSystemManager.Instance.transform);
+        impact.GetComponentsInChildren<ParticleSystem>()
+            .ToList()
+            .ForEach(ps => ParticleSystemManager.Instance.AddSystem(ps, 2));
+
+        Destroy(gameObject);
     }
 }

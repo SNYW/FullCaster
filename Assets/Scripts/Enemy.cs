@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,6 +16,8 @@ public class Enemy : MonoBehaviour
     public int expValue;
     public EnemyState state;
     public Vector3 targetPos;
+    public List<SecondarySpellEffect> secondarySpellEffects = new List<SecondarySpellEffect>();
+    public List<Transform> targetTransforms;
     private NavMeshAgent agent;
 
     public enum EnemyState
@@ -88,6 +91,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        secondarySpellEffects.ForEach(s => SpellManager.Instance.secondaryEffects.Remove(s));
         GameManager.Instance.Enemies.Remove(this);
         GameManager.Instance.AddExp(expValue);
         Destroy(this.gameObject);

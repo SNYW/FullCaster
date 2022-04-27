@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireballTier0
   m_EditorClassIdentifier: 
   tierName: Fireball
-  description: Shoots at the closest enemy dealing 10 damage on hit
+  description: Shoots at the closest enemy dealing 50 damage on hit
   coolDown: 3
   projectile: {fileID: 268086727245526328, guid: d1cd54bbf4b2bb942b75bb5f9f386a98, type: 3}
   amount: 1

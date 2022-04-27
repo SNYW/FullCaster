@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: IceDart4
   m_EditorClassIdentifier: 
   tierName: Ice Dart LV4
-  description: 'Projectiles +1 '
-  coolDown: 3
+  description: Projectiles +1,  Cooldown - 1sec
+  coolDown: 2
   projectile: {fileID: 268086727245526328, guid: fe8ae20255074aa4eaea099777a33fa4, type: 3}
   amount: 5
   delay: 0.1

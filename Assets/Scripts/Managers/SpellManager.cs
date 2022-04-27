@@ -10,6 +10,7 @@ public class SpellManager : MonoBehaviour
     public Transform spellSlotParent;
     public List<Spell> possibleSpells = new List<Spell>();
     public List<Spell> defaultSpells = new List<Spell>();
+    public List<SecondarySpellEffect> secondaryEffects = new List<SecondarySpellEffect>();
 
     private void Awake()
     {
@@ -71,7 +72,8 @@ public class SpellManager : MonoBehaviour
     public List<SpellInstance> GetSpellChoices()
     {
         var validSpells = new List<SpellInstance>();
-        var maxSize = possibleSpells.Count > 3 || possibleSpells.Count == 0 ? 1 : possibleSpells.Count;
+        var maxSize = Mathf.Min(3, possibleSpells.Count);
+        maxSize = maxSize == 0 ? defaultSpells.Count : maxSize;
         while (validSpells.Count < maxSize)
         {
             var newChoiceSpell = GetRandomSpell();
@@ -164,6 +166,6 @@ public class SpellManager : MonoBehaviour
 
     public void TriggerGlobalCooldown()
     {
-        activeSpells.ForEach(spell => spell.remainingCooldown += 1);
+        //activeSpells.ForEach(spell => spell.remainingCooldown += 1);
     }
 }

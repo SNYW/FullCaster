@@ -37,10 +37,7 @@ public class AreaEffect : MonoBehaviour
 
     private void HandleParticles(ParticleSystem sys)
     {
-        var em = sys.emission;
-        em.rateOverTime = 0f;
-        sys.transform.parent = null;
-        Destroy(sys.gameObject, 2.9f);
+        ParticleSystemManager.Instance.AddSystem(sys, 2);
     }
 
     private IEnumerator DoEffects()

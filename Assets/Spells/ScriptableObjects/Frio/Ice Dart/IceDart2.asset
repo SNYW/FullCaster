@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IceDart2
   m_EditorClassIdentifier: 
   tierName: Ice Dart LV2
-  description: Damage +1  Projectiles + 1
+  description: Damage +1,  Projectiles + 1
   coolDown: 3
   projectile: {fileID: 268086727245526328, guid: fe8ae20255074aa4eaea099777a33fa4, type: 3}
   amount: 3
